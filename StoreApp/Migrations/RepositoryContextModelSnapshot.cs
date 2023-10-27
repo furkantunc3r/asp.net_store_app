@@ -53,11 +53,17 @@ namespace StoreApp.Migrations
                     b.Property<int?>("CategoryId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("TEXT");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ProductName")
                         .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Summary")
                         .HasColumnType("TEXT");
 
                     b.HasKey("ProductId");
@@ -70,51 +76,65 @@ namespace StoreApp.Migrations
                         new
                         {
                             ProductId = 1,
-                            CategoryId = 2,
+                            CategoryId = 1,
+                            ImageUrl = "/images/default.jpg",
                             Price = 17000m,
-                            ProductName = "Computer"
+                            ProductName = "Computer",
+                            Summary = ""
                         },
                         new
                         {
                             ProductId = 2,
-                            CategoryId = 2,
+                            CategoryId = 1,
+                            ImageUrl = "/images/default.jpg",
                             Price = 1000m,
-                            ProductName = "Keyboard"
+                            ProductName = "Keyboard",
+                            Summary = ""
                         },
                         new
                         {
                             ProductId = 3,
-                            CategoryId = 2,
+                            CategoryId = 1,
+                            ImageUrl = "/images/default.jpg",
                             Price = 500m,
-                            ProductName = "Mouse"
+                            ProductName = "Mouse",
+                            Summary = ""
                         },
                         new
                         {
                             ProductId = 4,
-                            CategoryId = 2,
+                            CategoryId = 1,
+                            ImageUrl = "/images/default.jpg",
                             Price = 7000m,
-                            ProductName = "Monitor"
+                            ProductName = "Monitor",
+                            Summary = ""
                         },
                         new
                         {
                             ProductId = 5,
                             CategoryId = 2,
+                            ImageUrl = "/images/default.jpg",
                             Price = 1500m,
-                            ProductName = "Deck"
+                            ProductName = "Deck",
+                            Summary = ""
                         },
                         new
                         {
                             ProductId = 6,
-                            CategoryId = 1,
+                            CategoryId = 2,
+                            ImageUrl = "/images/default.jpg",
                             Price = 25m,
-                            ProductName = "Book"
+                            ProductName = "Book",
+                            Summary = ""
                         },
                         new
                         {
                             ProductId = 7,
-                            CategoryId = 1,
+                            CategoryId = 2,
+                            ImageUrl = "/images/default.jpg",
                             Price = 15m,
-                            ProductName = "Pen"
+                            ProductName = "Pen",
+                            Summary = ""
                         });
                 });
 
