@@ -1,3 +1,4 @@
+using Entities.Dtos;
 using Entities.Models;
 
 namespace Services.Contracts
@@ -8,8 +9,9 @@ namespace Services.Contracts
         
         Product? GetOneProduct(int id, bool trackChanges);
 
-        void CreateProduct(Product product);
-        void UpdateProduct(Product product);
+        void CreateProduct(ProductDtoForInsertion productDto);
+        void UpdateProduct(ProductDtoForUpdate productDto);
         void DeleteProduct(int id);
+        ProductDtoForUpdate GetOneProductForUpdate(int id, bool trackChanges);
     }
 }

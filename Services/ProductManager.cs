@@ -1,3 +1,5 @@
+using AutoMapper;
+using Entities.Dtos;
 using Entities.Models;
 using Repositories.Contracts;
 using Services.Contracts;
@@ -8,14 +10,18 @@ namespace Services
     {
 
         private readonly IRepositoryManager _manager;
+        private readonly IMapper  _mapper;
 
-        public ProductManager(IRepositoryManager manager)
+        public ProductManager(IRepositoryManager manager, IMapper mapper)
         {
+            _mapper = mapper;
             _manager = manager;
         }
 
-        public void CreateProduct(Product product)
+        public void CreateProduct(ProductDtoForInsertion productDto)
         {
+            Product product = _mapper.Map<Product>(productDto);
+
             _manager.Product.Create(product);
             _manager.Save();
         }
@@ -45,11 +51,17 @@ namespace Services
             return product;
         }
 
-        public void UpdateProduct(Product product)
+        public ProductDtoForUpdate GetOneProductForUpdate(int id, bool trackChanges)
         {
-            var entity = _manager.Product.GetOneProduct(product.ProductId, true);
-            entity.ProductName = product.ProductName;
-            entity.Price = product.Price;
+            var product = GetOneProduct(id, trackChanges);
+            var productDto = _mapper.Map<ProductDtoForUpdate>(product);
+            return productDto;
+        }
+
+        public void UpdateProduct(ProductDtoForUpdate productDto)
+        {
+            var entity = _mapper.Map<Product>(productDto);
+            _manager.Product.UpdateOneProduct(entity);
             _manager.Save();
         }
     }
